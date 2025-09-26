@@ -333,23 +333,26 @@ class CameraViewController: UIViewController {
 }
 
 extension CameraViewController: AVCaptureVideoDataOutputSampleBufferDelegate {
-    public func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
+    public func captureOutput(_ output: AVCaptureOutput,
+                              didOutput sampleBuffer: CMSampleBuffer,
+                              from connection: AVCaptureConnection) {
         let visionImage = VisionImage(buffer: sampleBuffer)
-        
-        // .right = portrait mode
-        // .up = landscapeRight
         visionImage.orientation = orientationForScanning
-        
-        guard let result = try? textRecognizer.results(in: visionImage) else {
-            #if DEBUG
-            NSLog("Text Recognizer", "Something went wrong while setting up TextRecognizer")
-            #endif
-            return
+
+        textRecognizer.process(visionImage) { visionText, error in
+            guard error == nil, let visionText = visionText else {
+                #if DEBUG
+                NSLog("Text Recognizer error: \(error?.localizedDescription ?? "Unknown error")")
+                #endif
+                return
+            }
+
+            // 🔥 Delegate orqali qaytaramiz
+            self.cameraDelegate?.camera(self, didScan: visionText)
         }
-        
-        cameraDelegate?.camera(self, didScan: result)
     }
 }
+
 
 // MARK: - Auxilliary methods
 extension CameraViewController {
