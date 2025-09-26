@@ -17,7 +17,7 @@ A new Flutter plugin.
   s.source_files = 'Classes/**/*'
   s.resources = 'Assets/*.png'
   s.dependency 'Flutter'
-  s.dependency 'GoogleMLKit/TextRecognition'
+  s.dependency 'GoogleMLKit/TextRecognition', '~> 3.2.0'
   s.platform = :ios, '10.0'
   s.static_framework = true
 
