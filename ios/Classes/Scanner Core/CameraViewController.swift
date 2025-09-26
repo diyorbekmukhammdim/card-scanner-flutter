@@ -8,8 +8,10 @@
 
 import UIKit
 import AVFoundation
-import MLKitTextRecognition
-import MLKitVision
+//import MLKitTextRecognition
+//import MLKitVision
+import GoogleMLKit
+
 
 protocol CameraDelegate {
     func camera(_ camera: CameraViewController, didScan scanResult: Text)

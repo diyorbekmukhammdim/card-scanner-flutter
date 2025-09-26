@@ -6,7 +6,9 @@
 //
 
 import Foundation
-import MLKitTextRecognition
+//import MLKitTextRecognition
+import GoogleMLKit
+
 
 class ExpiryDateFilter : ScanFilter {
     var visionText: Text

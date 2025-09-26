@@ -6,7 +6,8 @@
 //
 
 import Foundation
-import MLKitTextRecognition
+//import MLKitTextRecognition
+import GoogleMLKit
 
 class ScanFilterResult {
     private var visionText: Text

@@ -6,7 +6,9 @@
 //
 
 import Foundation
-import MLKitTextRecognition
+//import MLKitTextRecognition
+import GoogleMLKit
+
 
 class CardHolderNameFilter : ScanFilter {
     private var cardHolderRegex: NSRegularExpression =  try! NSRegularExpression(pattern: CardScannerRegexps.cardHolderName, options: .anchorsMatchLines)
