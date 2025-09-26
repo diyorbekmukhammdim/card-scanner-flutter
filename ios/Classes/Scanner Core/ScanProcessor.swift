@@ -7,7 +7,8 @@
 //
 
 import UIKit
-import MLKitTextRecognition
+//import MLKitTextRecognition
+import GoogleMLKit
 
 public protocol ScanProcessorDelegate {
     func scanProcessor(_ scanProcessor: ScanProcessor, didFinishScanning card: CardDetails)
